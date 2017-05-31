@@ -1,0 +1,26 @@
+.math-text-box {
+    border:none;
+    background:lightgray;
+    font-family:monospace;
+    text-align: center;
+}
+
+.math-input-line{
+    display: inline-block;
+    border: solid black 1px;
+    text-align:left;
+    min-width:400px;
+}
+
+.mathinput-fraction{
+    display: inline-block;
+    vertical-align:middle;
+}
+
+.mathinput-fraction-ator{
+    text-align:center;
+}
+
+.mathinput-fraction-denominator{
+    border-top: 1px solid black;
+}
