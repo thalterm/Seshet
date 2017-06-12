@@ -1,0 +1,31 @@
+.seshet-fraction{
+    display: inline-block;
+    vertical-align:middle;
+}
+
+.seshet-fraction-ator{
+    text-align:center;
+}
+
+.seshet-fraction-denominator{
+    border-top: 1px solid black;
+}
+
+.seshet-sqrt{
+    margin-top:1px;
+}
+
+.sqrt-symbol{
+}
+
+.seshet-sqrt-body{
+    border-top: 1px solid black;
+    margin-top: 1px;
+    display:inline-block;
+}
+
+.seshet-exponent input{
+  color:blue;
+  font-size:small;
+  text-size:"small";
+}

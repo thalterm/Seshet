@@ -1,0 +1,21 @@
+.seshet-text-box {
+    border:none;
+    font-family:monospace;
+    text-align: center;
+}
+
+.seshet-input-required.seshet-input-empty.seshet-input-alone{
+    background:lightgray;
+    width:1em;
+}
+
+.seshet-input-empty{
+    width:.25em;
+}
+
+.seshet-input-line{
+    display: inline-block;
+    border: solid black 1px;
+    text-align:left;
+    min-width:400px;
+}

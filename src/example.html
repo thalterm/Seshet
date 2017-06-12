@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Formula Demonstration</title>
+<link rel="stylesheet" href="seshet-core.css" />
+<link rel="stylesheet" href="seshet-operators.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="seshet-core.js"></script>
+<script type="text/javascript" src="seshet-operators.js"></script>
+</head>
+
+<script type="text/javascript">
+function onLoad(){
+    m = new seshet.InputLine($('#seshet-input-container'),$('#seshet-target'));
+}
+</script>
+<body onload="onLoad()">
+<div id="seshet-input-container">
+  
+</div>
+<div>
+  <input type="button" onclick="seshet.insertOperatorAtCursor(seshet.operators.Fraction);" value="½"/>
+  <input type="button" onclick="seshet.insertOperatorAtCursor(seshet.operators.Sqrt);" value="√¯"/>
+  <input type="button" onclick="seshet.insertOperatorAtCursor(seshet.operators.Paren);" value="()"/>
+  <input type="button" onclick="seshet.insertOperatorAtCursor(seshet.operators.Exponent);" value="a¹"/>
+</div>
+<div>
+<input id="seshet-target" type="text" value="( sqrt(3))/(2)"/>
+</div>
+</body>
+</html>
