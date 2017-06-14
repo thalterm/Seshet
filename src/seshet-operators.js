@@ -34,7 +34,7 @@ Style operators in seshet-operators.css
     '{0}/{1}');
 
     seshet.operators.registerOperator("Sqrt",
-    '<span class="seshet-sqrt"><span class="sqrt-symbol">√</span><span class="seshet-input-container seshet-sqrt-body"></span></span>',
+    '<span class="seshet-sqrt"><span class="sqrt-symbol"></span><span class="seshet-input-container seshet-sqrt-body"></span></span>',
     ' sqrt{0}');
 
     seshet.operators.registerOperator("Exponent",

@@ -162,7 +162,7 @@
         var prevBox = this.parent.list[index-1];
         var nextBox = this.parent.list[index+1];
         prevBox.next = nextBox.next;
-        prevBox.next.prev = prevBox;
+        if (prevBox.next) prevBox.next.prev = prevBox;
         prevBox.setValue(prevBox.getValue()+nextBox.getValue());
         this.element.remove();
         nextBox.element.remove();
