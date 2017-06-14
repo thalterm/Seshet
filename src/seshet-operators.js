@@ -26,7 +26,7 @@ Style operators in seshet-operators.css
 (function(seshet, $, undefined){
     
     seshet.operators.registerOperator("Paren",
-    '<span class="seshet-paren"><span class="paren left-paren">(</span><span class="seshet-input-container"></span><span class="paren right-paren">)</span></span>',
+    '<span class="seshet-paren"><span class="seshet-input-container"></span></span>',
     '{0}');
 
     seshet.operators.registerOperator("Fraction",
