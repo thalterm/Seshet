@@ -25,7 +25,5 @@
 }
 
 .seshet-exponent input{
-  color:blue;
-  font-size:small;
-  text-size:"small";
+  font-size:smaller;
 }

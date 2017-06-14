@@ -16,6 +16,7 @@
         this.element.bind('input',scaleInputListener);
         this.element.bind('input',updateAnswerListener);
         this.element.bind('focus',updateCurrentFocus);
+        this.element.bind('keydown',this.arrowListener);
         if (content === undefined) content = '';
         this.setValue(content);
     }
@@ -37,8 +38,15 @@
     seshet.TextBox.prototype.insertOperatorAtEnd = function (operator) {
         var nextTextBox = new seshet.TextBox(this.parent, false);
         var op = new operator(this.parent);
-        nextTextBox.prevOperator = op;
+        nextTextBox.prev = op.list[op.length-1].list[0];
+        nextTextBox.prev.next = nextTextBox;
+        nextTextBox.next = this.next;
+        if (nextTextBox.next) nextTextBox.next.prev = nextTextBox;
+        this.next = op.list[0].list[0];
+        this.next.prev = this;
         op.nextTextBox = nextTextBox;
+        nextTextBox.prevOperator = op;
+        
         nextTextBox.element.bind('keydown',function (keyEvent) {op.deleteListener(op,keyEvent)});
         var index = this.parent.list.indexOf(this);
         this.parent.length += 2;
@@ -60,6 +68,7 @@
         op.nextTextBox.setValue(initialValue.slice(se,initialValue.length));
         var index = seshet.Focus.parent.list.indexOf(seshet.Focus);
         seshet.Focus.parent.list.splice(index+1,0,op,op.nextTextBox);
+        op.list[0].list[0].element.focus();
         return op;
     }
 
@@ -129,10 +138,14 @@
         var containers = this.element.find('.seshet-input-container');
         this.length = containers.length;
         this.list = [];
+        prev = null;
         for (var i=0; i<this.length; i++) {
             var j = new seshet.TermField(this);
+            j.list[0].prev=prev;
+            if(prev) prev.next=j.list[0];
             this.list.push(j);
             $(containers[i]).append(j.element);
+            prev = j.list[0];
         }
     }
 
@@ -148,6 +161,8 @@
         var index = this.parent.list.indexOf(this);
         var prevBox = this.parent.list[index-1];
         var nextBox = this.parent.list[index+1];
+        prevBox.next = nextBox.next;
+        prevBox.next.prev = prevBox;
         prevBox.setValue(prevBox.getValue()+nextBox.getValue());
         this.element.remove();
         nextBox.element.remove();
@@ -161,6 +176,26 @@
         var ss = target.selectionStart;
         if (keyEvent.keyCode === 8 & ss === 0){
             op.delete();
+        }
+    }
+
+    seshet.TextBox.prototype.arrowListener = function(keyEvent){
+        var target = keyEvent.target;
+        var ss = target.selectionStart;
+        var se = target.selectionEnd;
+        if (ss == se){
+            if (keyEvent.keyCode === 37 && ss === 0 && target.container.prev){
+                focus = target.container.prev.element;
+                focus.focus();
+                focus[0].selectionStart = focus[0].value.length;
+                keyEvent.preventDefault();
+            }
+            else if(keyEvent.keyCode === 39 && ss === target.value.length && target.container.next){
+                focus = target.container.next.element;
+                focus.focus();
+                focus[0].selectionEnd = 0;
+                keyEvent.preventDefault();
+            }
         }
     }
 
