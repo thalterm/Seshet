@@ -43,6 +43,6 @@ Style operators in seshet-operators.css
     
     seshet.operators.registerOperator("Sqrt2",
     '<span class="seshet-sqrt"><span class="sqrt-symbol"></span><span class="seshet-input-container seshet-sqrt-body"></span></span>',
-    ' {0}');
+    'sqrt{0}');
 
 }( window.seshet = window.seshet || {}, jQuery));
