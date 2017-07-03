@@ -40,6 +40,9 @@ Style operators in seshet-operators.css
     seshet.operators.registerOperator("Exponent",
     '<span class="seshet-exponent"><sup><span class="seshet-input-container"></span></sup></span>',
     '^{0}');
-
+    
+    seshet.operators.registerOperator("Sqrt2",
+    '<span class="seshet-sqrt"><span class="sqrt-symbol"></span><span class="seshet-input-container seshet-sqrt-body"></span></span>',
+    ' {0}');
 
 }( window.seshet = window.seshet || {}, jQuery));
